@@ -1,0 +1,21 @@
+# Set default behavior to automatically normalize line endings to LF
+* text=auto eol=lf
+
+# Explicit text files
+*.md text
+*.yml text
+*.yaml text
+*.json text
+*.sh text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# GitHub Linguist Overrides
+.github/* linguist-documentation
+scripts/* linguist-documentation

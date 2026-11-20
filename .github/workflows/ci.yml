@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-validate:
+    name: Lint & Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate YAML files
+        run: |
+          python3 -c "
+          import yaml, glob, sys
+          files = glob.glob('.github/**/*.yml', recursive=True) + glob.glob('.github/**/*.yaml', recursive=True)
+          errors = 0
+          for f in files:
+              try:
+                  with open(f, 'r') as fp:
+                      yaml.safe_load(fp)
+                  print(f'✔ Valid YAML: {f}')
+              except Exception as e:
+                  print(f'✘ Invalid YAML in {f}: {e}', file=sys.stderr)
+                  errors += 1
+          if errors > 0:
+              sys.exit(1)
+          "
+
+      - name: ShellCheck on Installer Script
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./scripts"
+
+      - name: Verify Core Files Exist
+        run: |
+          for file in README.md SKILL.md LICENSE CONTRIBUTING.md SECURITY.md CODE_OF_CONDUCT.md .editorconfig .gitattributes; do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $file"
+              exit 1
+            fi
+            echo "✔ $file verified"
+          done

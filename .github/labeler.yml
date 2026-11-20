@@ -1,0 +1,15 @@
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ["README.md", "docs/**", "**/*.md"]
+
+workflows:
+  - changed-files:
+      - any-glob-to-any-file: [".github/workflows/**"]
+
+governance:
+  - changed-files:
+      - any-glob-to-any-file: [".github/ISSUE_TEMPLATE/**", ".github/pull_request_template.md", "CONTRIBUTING.md", "SECURITY.md", "CODE_OF_CONDUCT.md"]
+
+scripts:
+  - changed-files:
+      - any-glob-to-any-file: ["scripts/**"]

@@ -1,0 +1,59 @@
+name: "🐛 Bug Report"
+description: "Submit a bug report to help improve GitHub Repo Architect."
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please verify the bug hasn't already been reported in [existing issues](https://github.com/h4rysh/github-repo-architect/issues).
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: Concise description of the issue.
+      placeholder: "e.g., Branch protection script fails on GitHub Enterprise"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: assistant-environment
+    attributes:
+      label: Agent / Assistant Environment
+      options:
+        - "Google Antigravity"
+        - "Claude Code"
+        - "Cursor"
+        - "Gemini CLI"
+        - "Codex / Copilot"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: What instructions did you give the agent and what failed?
+      placeholder: |
+        1. Invoked /github-repo-architect
+        2. Prompted 'Audit this repository'
+        3. Observed error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Agent Logs or Terminal Output
+      description: Paste any error traces here.
+      render: shell
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Verification
+      options:
+        - label: "I tested this against the latest main branch of this skill."
+          required: true

@@ -1,0 +1,42 @@
+name: "✨ Feature Request"
+description: "Suggest a new blueprint, workflow, or architectural pattern for GitHub Repo Architect."
+title: "[Feature]: "
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for a new repository pattern, CI check, or developer experience enhancement? We'd love to hear it!
+
+  - type: input
+    id: feature-title
+    attributes:
+      label: Feature Title
+      description: Concise one-line description of your idea.
+      placeholder: "e.g., Add Turborepo monorepo scaffolding template"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Motivation
+      description: Is your feature request related to a specific pain point?
+      placeholder: "I'm always running into issues when configuring..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution or Specification
+      description: Describe how the skill should handle or generate this pattern.
+      placeholder: "Add a new section to SKILL.md covering..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any other approaches or existing tools you've looked at?

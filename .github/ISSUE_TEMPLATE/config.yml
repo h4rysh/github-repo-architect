@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "💬 Ask a Question or Discuss an Idea"
+    url: "https://github.com/h4rysh/github-repo-architect/discussions"
+    about: "For architectural questions, prompt engineering discussions, and community showcase."
+  - name: "🚨 Security Advisory"
+    url: "https://github.com/h4rysh/github-repo-architect/security/policy"
+    about: "Privately disclose a vulnerability in accordance with our security policy."
